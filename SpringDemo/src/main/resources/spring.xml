@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!-- bean definitions here -->
+      <!--  <bean class="com.spring.SpringMavenDemo.entity.Author">
+                &lt;!&ndash;Constructor &ndash;&gt;
+                <constructor-arg name="aid" value="101"></constructor-arg>
+                <constructor-arg name="aname" value="dpka"></constructor-arg>
+                <constructor-arg name="genre" value="thriller"></constructor-arg>
+        </bean>-->
+
+        <bean id="a1" class="com.spring.SpringMavenDemo.entity.Author">
+                <!--Constructor -->
+                <constructor-arg name="aid" value="101"></constructor-arg>
+                <constructor-arg name="aname" value="dpka"></constructor-arg>
+                <constructor-arg name="genre" value="thriller"></constructor-arg>
+        </bean>
+        <bean id="a2" class="com.spring.SpringMavenDemo.entity.Author">
+                <!-- setter injection-->
+                <property name="aid" value="1"></property>
+                <property name="aname" value="Sanjana"></property>
+                <property name="genre" value="Horror"></property>
+        </bean>
+
+
+</beans>
