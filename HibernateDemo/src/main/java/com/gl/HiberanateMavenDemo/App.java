@@ -1,6 +1,7 @@
 package com.gl.HiberanateMavenDemo;
 
 import com.gl.HibernateMavenDemo.entity.Author;
+import com.gl.HibernateMavenDemo.entity.Employee;
 import com.gl.com.gl.HibernateMavenDemo.config.HibernateConfig;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,18 +40,38 @@ public class App
     {
         System.out.println( "Hello World!" );
         System.out.println( "Config Loaded" );
-        Author a1=new Author("Shikari Shambu","Kids");
-       //System.out.println(insertAuthor(a1));
-        System.out.println(a1);
-        a1.setName("Shikar Sen ");
+        Author a1=new Author("Shekar Shambu","Kids");
+       /*System.out.println(insertAuthor(a1));
+        System.out.println(a1);*/
+           a1.setName("Shikar Sen ");
         a1.setAid(3);
-        System.out.println(a1);
-        //System.out.println(updateAuthor(a1));
-        //deleteAuthor(a1);
-        System.out.println(getAuthorById(2));
+/*
+        System.out.println(updateAuthor(a1));
+        deleteAuthor(a1);
         for (Author author:getAllAuthors()) {
-            System.out.println(author);
-        }
+            System.out.println(author);}*/
+       /* System.out.println(getAuthorById(5));// if there is no ID present in table -- returns null
+        System.out.println("---------------");
+        System.out.println(loadAuthorById(5));*/// if there is no ID present in table -- throws exception
+                                                        //Benefit of 'load'
+                                                        //we need to use 'load' only when we are sure data exists
+
+//'LazyInitializationException' - because it did not load the class
+        Author author=getAuthorById(2);
+        System.out.println(author.getAid());
+        System.out.println("---------------");
+       /* Author authorProxy=loadAuthorById(2000);
+        System.out.println(authorProxy.getAid());*/
+       // System.out.println(authorProxy.getName());
+ /*     EmployeeApp ea=new EmployeeApp();
+        Employee employee=new Employee("bpk@ac.in","bpk","8998");
+        System.out.println(ea.insertEmployee(employee));
+        employee.setEmployeeName("bindhu");
+        employee.setPhone("898905");
+        System.out.println(ea.updateEmployee(employee));
+*/
+
+
     }
     public static int insertAuthor(Author author){
         //create a session
@@ -103,6 +124,16 @@ public class App
         //DML  commit => transaction
         Session session = factory.openSession();
         Author author= session.get(Author.class,authorId);
+        session.close();
+        //System.out.println(author);
+        return author;
+    }
+    public static Author loadAuthorById(int authorId){
+        //create a session
+        //DML  commit => transaction
+        Session session = factory.openSession();
+        Author author=new Author();
+        session.load(author,authorId);
         session.close();
         //System.out.println(author);
         return author;
