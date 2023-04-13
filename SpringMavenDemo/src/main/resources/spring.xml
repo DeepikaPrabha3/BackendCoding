@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="a1" class="com.spring.SpringMavenDemo.entity.Author" scope="prototype">
+        <property name="aid" value="1" ></property>
+        <property name="aname" value="Amrita" ></property>
+        <property name="genre" value="thriller" ></property>
+    </bean>
+    <bean id="a2" class="com.spring.SpringMavenDemo.entity.Author" scope="prototype">
+        <property name="aid" value="2" ></property>
+        <property name="aname" value="Aaditya" ></property>
+        <property name="genre" value="Emotional" ></property>
+    </bean>
+    <bean class="com.spring.SpringMavenDemo.entity.Book" scope="prototype">
+        <property name="bid" value="11" ></property>
+        <property name="bname" value="Wings of Fire" ></property>
+        <property name="price" value="256" ></property>
+        <property name="author" ref="a2" ></property><!-- 'Property Injection' When you have a has a relation -->
+    </bean>
+</beans>
