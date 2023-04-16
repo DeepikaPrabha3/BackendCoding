@@ -13,7 +13,8 @@
         <property name="aname" value="Aaditya" ></property>
         <property name="genre" value="Emotional" ></property>
     </bean>
-    <bean class="com.spring.SpringMavenDemo.entity.Book" scope="prototype">
+    <!-- 'lazy-init - initializes the bean only when the bean class is called from context-->
+    <bean class="com.spring.SpringMavenDemo.entity.Book" scope="prototype" lazy-init="true">
         <property name="bid" value="11" ></property>
         <property name="bname" value="Wings of Fire" ></property>
         <property name="price" value="256" ></property>

@@ -1,14 +1,25 @@
 package com.spring.SpringMavenDemo.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("Writer")
 public class Author {
+    //Injected the properties using Annotations
+    //This is Field Injection
+    @Value("101")
     private int  aid;
+    @Value("Sreevidhya")
     private String aname;
+    @Value("Motivation")
     private String genre;
 
     public Author() {
+        System.out.println("Author Default Constructor");
     }
 
-    public Author(int aid, String aname, String genre) {
+    public Author( @Value("101")int aid, @Value("Sreevidhya")String aname, @Value("Motivation")String genre) {
+        System.out.println("Author Parameter Constructor");
         this.aid = aid;
         this.aname = aname;
         this.genre = genre;

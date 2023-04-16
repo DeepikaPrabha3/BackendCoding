@@ -1,15 +1,28 @@
 package com.spring.SpringMavenDemo.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Book {
+    //For Annotation Based - the property thats primitive --to inject value - use @Value
+    @Value("1090")
     private int bid;
+    @Value("Jab Rishi Met Dimple")
     private String bname;
+    @Value("879.50")
     private double price;
     //The book class has 'Author' as a reference. It is a 'has a ' Relationship
+    //While Using Annotation Method for Spring - for object based property we cant use @Value , hence use @Autowired
+    @Autowired
     private Author author;
     public Book() {
+        System.out.println("Book Default Constructor");
     }
 
     public Book(int bid, String bname, double price) {
+        System.out.println("Book Parameter Constructor");
         this.bid = bid;
         this.bname = bname;
         this.price = price;
